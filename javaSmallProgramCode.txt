@@ -1,0 +1,11 @@
+//求一个数的回文数
+public static int reverse(int number)
+{
+	int reverseNumber = 0;
+	for(;number!=0;)
+	{
+		reverseNumber = number%10+reverseNumber*10;
+		number/=10;
+	}
+	return reverseNumber;
+}
