@@ -1,4 +1,4 @@
-//ÇóÒ»¸öÊıµÄ»ØÎÄÊı
+//åˆ¤æ–­ä¸€ä¸ªæ•°æ˜¯å¦æ˜¯å›æ–‡æ•°
 public static int reverse(int number)
 {
 	int reverseNumber = 0;
@@ -8,4 +8,18 @@ public static int reverse(int number)
 		number/=10;
 	}
 	return reverseNumber;
+}
+//åˆ¤æ–­ä¸€ä¸ªæ•°æ˜¯å¦ä¸ºç´ æ•°
+public static void isPrime(int number)
+{
+	int testNumber = 2;
+	for(;testNumber<=Math.sqrt(number);testNumber++)
+	{
+		if(number%testNumber==0)
+		{	System.out.println("The number is not a prime.");
+			return;
+		}
+	}
+	System.out.println("The number is a prime.");
+	
 }
