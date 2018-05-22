@@ -23,3 +23,12 @@ public static void isPrime(int number)
 	System.out.println("The number is a prime.");
 	
 }
+//交换两个数的值,使用此方法不需要通过第三个变量实现交换两数的值
+public static void change(int number1,int number2)
+{
+	System.out.println("number1= "+number1+" number2= "+number2);
+	number1=number1^number2;
+	number2=number1^number2;
+	number1=number1^number2;
+	System.out.println("number1= "+number1+" number2= "+number2);
+}
