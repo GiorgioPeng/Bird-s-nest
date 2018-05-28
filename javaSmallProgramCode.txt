@@ -1,4 +1,4 @@
-//判断一个数是否是回文数
+﻿//判断一个数是否是回文数
 public static int reverse(int number)
 {
 	int reverseNumber = 0;
@@ -64,46 +64,4 @@ public static int findValue(int[] arr)
 		}
 		return -1;
 	}
-//八皇后待续
 
-import java.util.Scanner;
-public class bookQuestion {
-
-	public static void main(String[] args) {
-		int[] queen = new int[8];
-		Scanner input = new Scanner (System.in);
-		System.out.println("enter a number:");
-		int number = input.nextInt();
-		queen[0]=number;
-		for(int i=1;i<8;i++)
-		{
-			for(int j=0;j<8;j++)
-				{
-					if(test(queen))
-					queen[i]=j;
-					
-				}
-		}
-		for(int i=0;i<8;i++)
-		{	for(int j=0;j<8;j++)
-				if(queen[i]==j)
-				System.out.print("|Q");
-				else 
-					System.out.print("| ");
-			System.out.println("|");
-		}
-	}
-	public static boolean test(int[] queen)
-	{
-		
-		for(int i=0;i<8;i++)
-		{	for(int j = 0;j<8;j++)
-			{if(j-i==0)
-				continue;
-			if((queen[i-j]-queen[i])/(j-i)!=1&&(queen[i-j]-queen[i])/(j-i)!=(-1)&&queen[i]==0)
-				return true;
-			}
-		}
-		return false;
-	}
-}
