@@ -65,3 +65,16 @@ public static int findValue(int[] arr)
 		return -1;
 	}
 
+//改变字符串数组大小
+	String[] words= {"test","practice","program","write","read"};
+	words = addData(words,new String[]{"name","space"});
+	public String[] addData(String[] words,String[] Data) {
+			String[] now = new String[words.length+Data.length];
+			for(int i=0;i<words.length;i++)
+				now[i]=words[i];
+			for(int i=0;i<Data.length;i++)
+				now[words.length+i]=Data[i];
+			return now;
+			
+		}
+	

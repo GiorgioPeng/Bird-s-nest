@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>计算器</title>
+</head>
+<style media="screen">
+  .num{
+    border-radius: 5px;
+    border:solid;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    margin-left: 4px;
+    margin-right: 4px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    opacity: 0.7;
+    color: #ce4589;
+    box-shadow: 2px 2px 2px;
+  }
+</style>
+<body>
+  <div id="mainbody" style="width:80%;height:600px;margin-left:auto;margin-right:auto">
+    <div id="main" style=" border: solid;width: 255px;height: 370px;margin-top: 150px;margin-left:auto;margin-right:auto">
+    <div id="anwsersssss">
+      <input type="text" id="anwser" style="border-radius: 5px;font-size: auto;border: solid;width:250px;height:50px;"value="">
+    </div>
+    <div id="number" style="margin-top:20px;">
+      <div id="number0" style="height:120px">
+        <input type="button" class="num" onclick="enter('-')"style="color:gray;opacity: 1;" name="" value="-">
+        <input type="button" class="num" onclick="enter('/')"style="color:yellow;opacity: 1;" name="" value="/">
+        <input type="button" class="num" onclick="enter('%')"style="color:pink;opacity: 1;" name="" value="%">
+        <input type="button" class="num" onclick="enter('.')"style="opacity: 1;" name="" value=".">
+        <input type="button" class="num" onclick="enter(0)" name="number" style="width:117px;float:left"value="0">
+        <input type="button" class="num" onclick="AC()" style="width:117px;float:left" value="AC">
+      </div>
+      <div id="number1">
+        <input type="button" class="num" onclick="enter(1)" name="number" value="1">
+        <input type="button" class="num" onclick="enter(2)" name="number" value="2">
+        <input type="button" class="num" onclick="enter(3)" name="number" value="3">
+        <input type="button" class="num" onclick="enter('+')" style="color:blue" name="" value="+">
+      </div>
+      <div id="number2">
+        <input type="button" class="num" onclick="enter(4)" name="number" value="4">
+        <input type="button" class="num" onclick="enter(5)" name="number" value="5">
+        <input type="button" class="num" onclick="enter(6)" name="number" value="6">
+        <input type="button" class="num" onclick="enter('*')"style="color:red" name="" value="*">
+      </div>
+      <div id="number3">
+        <input type="button" class="num" onclick="enter(7)" name="number" value="7">
+        <input type="button" class="num" onclick="enter(8)" name="number" value="8">
+        <input type="button" class="num" onclick="enter(9)" name="number" value="9">
+        <input type="button" class="num" onclick="equal()" style="color:black;opacity:0.8" name="" value="=">
+      </div>
+    </div>
+
+  </div>
+  </div>
+  <script type="text/javascript">
+  var number1 = 0
+  var number2 = 0
+  var sym = ""
+
+ function enter(a){
+   if(isNaN(parseInt(a)))
+   {
+      number1 = parseInt(document.getElementById("anwser").value);
+      var anwser = ""
+      anwser += a
+      sym += a
+      document.getElementById("anwser").value += anwser + "";
+
+   }
+   else
+   {
+
+     var anwser = ""
+     anwser += a
+
+     document.getElementById("anwser").value += anwser + "";
+     number1 = parseInt(document.getElementById("anwser").value);
+   }
+ }
+function AC(){
+  document.getElementById("anwser").value ="";
+  number1 = 0
+  number2 = 0
+  sym = ""
+}
+function equal(){
+  var value = document.getElementById("anwser").value.replace(/[^0-9]/ig,"");
+  number1 += "";
+  value += "";
+  for(let a = number1.length;a<value.length;a++)
+    number2 += value.charAt(a);
+
+  if(sym=="+")
+      document.getElementById("anwser").value = Number(number1) + Number(number2);
+  if(sym=="*")
+      document.getElementById("anwser").value = Number(number1) * Number(number2);
+  if(sym=="/")
+      document.getElementById("anwser").value = Number(number1) / Number(number2);
+  if(sym=="%")
+      document.getElementById("anwser").value = Number(number1) % Number(number2);
+  if(sym=="-")
+      document.getElementById("anwser").value = Number(number1) - Number(number2);
+}
+
+  </script>
+</body>
+</html>
