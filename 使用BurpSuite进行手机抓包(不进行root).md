@@ -28,7 +28,9 @@
 
   再设置网络代理，代理IP为热点的IP，代理的端口为Burpsuite中设置的端口
 
-![](proxy1.jpg)
-![](proxy2.jpg)
+![](proxy1.jpg)  
+
+![](proxy2.jpg)  
+
 ---  
 以上配置全部完成之后，可以使用手机浏览器访问网页，微信小程序等,burpsuite会拦截相关的数据包
