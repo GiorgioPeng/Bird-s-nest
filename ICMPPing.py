@@ -88,7 +88,7 @@ def handle_error(type,code):
 	else:
 		return -1
 def checksum(string):
-	csum = 0 #设置校验和为0
+	csum = 0
 	countTo = (len(string) // 2) * 2
 	count = 0
 
@@ -121,6 +121,7 @@ def chesksum(data):
 	sum = 0
 	for i in range(0, n - m ,2):
 		sum += (data[i]) + ((data[i+1]) << 8)
+	if m:
 		sum += (data[-1])
 	sum = (sum >> 16) + (sum & 0xffff)
 	sum += (sum >> 16)
@@ -133,10 +134,8 @@ def receiveOnePing(icmpSocket, destinationAddress, ID, timeout,send_time):
 	reply = select.select([icmpSocket],[],[],float(timeout))
 	if reply[0] == []:
 		return 'timeout'
-	# print(reply)
 	# 2. Once received, record time of receipt, otherwise, handle a timeout
 	receive_time = time.time()
-	# print(receive_time)
 	# 3. Compare the time of receipt to time of sending, producing the total network delay
 
 	# 4. Unpack the packet header for useful information, including the ID
@@ -158,19 +157,11 @@ def sendOnePing(icmpSocket, destinationAddress, ID,seq):
 	id = ID
 	send_time = time.time()
 	body_data = b'testtesttesttesttesttesttesttest'
-	# print('-----\n第一次记录发包的时间',send_time)
 	# 2. Checksum ICMP packet using given function
 	packet = struct.pack('>BBHHH32s',type,code,cksum,id,seq,body_data)
-	# print(packet)
-	# print(str(packet))
-	###这里进行了更改
 	cksum = chesksum(packet)
-	###这里进行了更改
-
 	# 3. Insert checksum into packet
 	packet = struct.pack('>BBHHH32s',type,code,cksum,id,seq,body_data)
-	# ls = struct.unpack(">BBHHHd", packet)
-	# print('打包后再解包得到的发送时间',ls[5])
 	# 4. Send packet using socket
 	icmpSocket.sendto(packet,(destinationAddress,80))
 	# 5. Record time of sending
@@ -216,7 +207,6 @@ if __name__ == '__main__':
 			sys.argv.append(1)
 		if len(sys.argv) == 3:
 			sys.argv.append(4)
-			#need dns
 		sys.argv[1] = gethostbyname(sys.argv[1])
 		ping(sys.argv[1:])
 	except:
