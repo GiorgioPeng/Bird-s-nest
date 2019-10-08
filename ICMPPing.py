@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
+# it's based on python3
 from socket import *
 import os
 import sys
